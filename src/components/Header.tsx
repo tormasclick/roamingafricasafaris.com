@@ -8,6 +8,7 @@ interface NavItem {
   label: string;
   href: string;
   children?: { label: string; href: string }[];
+  highlight?: boolean;
 }
 
 const navItems: NavItem[] = [
@@ -53,7 +54,7 @@ const navItems: NavItem[] = [
   },
   { label: "Destinations", href: "/destinations" },
   { label: "Resources", href: "/resources" },
-  { label: "Contact", href: "/contact" },
+  { label: "Contact", href: "/contact", highlight: true },
 ];
 
 const Header = () => {
@@ -98,8 +99,12 @@ const Header = () => {
               >
                 <Link
                   to={item.href}
-                  className={`px-3 py-2 text-sm font-heading font-medium rounded-md transition-colors flex items-center gap-1 ${
-                    location.pathname === item.href ? "text-primary bg-muted" : "text-foreground hover:text-primary hover:bg-muted"
+                  className={`px-3 py-2 text-sm font-heading font-medium rounded-full transition-colors flex items-center gap-1 ${
+                    item.highlight
+                      ? "bg-primary text-primary-foreground hover:bg-secondary"
+                      : location.pathname === item.href
+                        ? "text-primary bg-muted"
+                        : "text-foreground hover:text-primary hover:bg-muted"
                   }`}
                 >
                   {item.label}
