@@ -22,27 +22,9 @@ const Footer = () => (
           </div>
         </div>
 
-        {/* Quick Links */}
-        <div>
-          <h3 className="text-lg mb-4 text-safari-gold">Quick Links</h3>
-          <ul className="space-y-2 text-sm">
-            {[
-              { label: "About Us", href: "/about" },
-              { label: "Contact Us", href: "/contact" },
-              { label: "Booking Inquiry", href: "/booking" },
-              { label: "Resources", href: "/resources" },
-              { label: "Destinations", href: "/destinations" },
-            ].map((l) => (
-              <li key={l.href}>
-                <Link to={l.href} className="opacity-80 hover:opacity-100 hover:text-safari-gold transition-colors">{l.label}</Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
         {/* Safari Types */}
         <div>
-          <h3 className="text-lg mb-4 text-safari-gold">Safaris</h3>
+          <h3 className="text-lg mb-4 text-accent">Safaris</h3>
           <ul className="space-y-2 text-sm">
             {[
               { label: "Kenya Safaris", href: "/kenya-safaris" },
@@ -52,7 +34,24 @@ const Footer = () => (
               { label: "Day Trips", href: "/kenya-safaris/day-trips" },
             ].map((l) => (
               <li key={l.href}>
-                <Link to={l.href} className="opacity-80 hover:opacity-100 hover:text-safari-gold transition-colors">{l.label}</Link>
+                <Link to={l.href} className="opacity-80 hover:opacity-100 hover:text-accent transition-colors">{l.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Destinations & Resources */}
+        <div>
+          <h3 className="text-lg mb-4 text-accent">Explore</h3>
+          <ul className="space-y-2 text-sm">
+            {[
+              { label: "Destinations", href: "/destinations" },
+              { label: "Resources", href: "/resources" },
+              { label: "Contact Us", href: "/contact" },
+              { label: "Book Your Safari", href: "/booking" },
+            ].map((l) => (
+              <li key={l.href}>
+                <Link to={l.href} className="opacity-80 hover:opacity-100 hover:text-accent transition-colors">{l.label}</Link>
               </li>
             ))}
           </ul>
@@ -60,15 +59,19 @@ const Footer = () => (
 
         {/* Contact */}
         <div>
-          <h3 className="text-lg mb-4 text-safari-gold">Contact Us</h3>
+          <h3 className="text-lg mb-4 text-accent">Contact Us</h3>
           <ul className="space-y-3 text-sm">
-            <li className="flex items-center gap-2 opacity-80"><Phone className="w-4 h-4 text-safari-gold" />{PHONE}</li>
-            <li className="flex items-center gap-2 opacity-80"><Mail className="w-4 h-4 text-safari-gold" />{EMAIL}</li>
-            <li className="flex items-center gap-2 opacity-80"><MapPin className="w-4 h-4 text-safari-gold" />{LOCATION}</li>
+            <li className="flex items-center gap-2 opacity-80"><Phone className="w-4 h-4 text-accent" />{PHONE}</li>
+            <li className="flex items-center gap-2 opacity-80"><Mail className="w-4 h-4 text-accent" />{EMAIL}</li>
+            <li className="flex items-center gap-2 opacity-80"><MapPin className="w-4 h-4 text-accent" />{LOCATION}</li>
           </ul>
-          <div className="mt-6 flex gap-3">
-            <img src="https://img.icons8.com/color/48/visa.png" alt="Visa" className="h-8" loading="lazy" />
-            <img src="https://img.icons8.com/color/48/mastercard.png" alt="Mastercard" className="h-8" loading="lazy" />
+          <div className="mt-6">
+            <p className="text-xs opacity-60 mb-2">We Accept</p>
+            <div className="flex gap-3 items-center">
+              <img src="https://img.icons8.com/color/48/visa.png" alt="Visa" className="h-8" loading="lazy" />
+              <img src="https://img.icons8.com/color/48/mastercard.png" alt="Mastercard" className="h-8" loading="lazy" />
+              <span className="bg-secondary text-secondary-foreground text-xs font-heading font-bold px-3 py-1.5 rounded">M-Pesa</span>
+            </div>
           </div>
         </div>
       </div>

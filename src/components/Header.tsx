@@ -16,20 +16,24 @@ const navItems: NavItem[] = [
     label: "Kenya Safaris", href: "/kenya-safaris",
     children: [
       { label: "Safaris in Kenya", href: "/kenya-safaris" },
+      { label: "Masai Mara Safaris", href: "/kenya-safaris" },
+      { label: "Amboseli Safaris", href: "/kenya-safaris" },
+      { label: "Lake Nakuru Safaris", href: "/kenya-safaris" },
       { label: "Safaris from Diani", href: "/kenya-safaris/diani" },
       { label: "Kenya Day Trips", href: "/kenya-safaris/day-trips" },
       { label: "Kenya Fly-in Safaris", href: "/kenya-safaris/fly-in" },
-      { label: "Safari Vehicles", href: "/kenya-safaris/vehicles" },
     ],
   },
   {
     label: "Tanzania Safaris", href: "/tanzania-safaris",
     children: [
       { label: "Safaris in Tanzania", href: "/tanzania-safaris" },
-      { label: "Zanzibar Beach Holidays", href: "/tanzania-safaris/zanzibar" },
+      { label: "Serengeti Safaris", href: "/tanzania-safaris" },
+      { label: "Ngorongoro Safaris", href: "/tanzania-safaris" },
+      { label: "Tarangire Safaris", href: "/tanzania-safaris" },
+      { label: "Zanzibar Holidays", href: "/tanzania-safaris/zanzibar" },
       { label: "Tanzania Day Trips", href: "/tanzania-safaris/day-trips" },
       { label: "Tanzania Fly-in Safaris", href: "/tanzania-safaris/fly-in" },
-      { label: "Tanzania Helicopter Tours", href: "/tanzania-safaris/helicopter" },
     ],
   },
   {
@@ -49,7 +53,6 @@ const navItems: NavItem[] = [
   },
   { label: "Destinations", href: "/destinations" },
   { label: "Resources", href: "/resources" },
-  { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -61,17 +64,17 @@ const Header = () => {
   return (
     <>
       {/* Top Bar */}
-      <div className="bg-safari-dark text-safari-cream text-sm hidden md:block">
+      <div className="bg-primary text-primary-foreground text-sm hidden md:block">
         <div className="container mx-auto px-4 py-2 flex justify-between items-center">
           <div className="flex items-center gap-6">
-            <a href={`tel:${PHONE.replace(/\s/g, "")}`} className="flex items-center gap-1 hover:text-safari-gold transition-colors">
+            <a href={`tel:${PHONE.replace(/\s/g, "")}`} className="flex items-center gap-1 hover:text-accent transition-colors">
               <Phone className="w-3.5 h-3.5" />{PHONE}
             </a>
-            <a href={`mailto:${EMAIL}`} className="flex items-center gap-1 hover:text-safari-gold transition-colors">
+            <a href={`mailto:${EMAIL}`} className="flex items-center gap-1 hover:text-accent transition-colors">
               <Mail className="w-3.5 h-3.5" />{EMAIL}
             </a>
           </div>
-          <Link to="/booking" className="bg-safari-gold text-safari-dark px-4 py-1 rounded font-heading font-bold text-xs hover:brightness-110 transition-all">
+          <Link to="/booking" className="bg-accent text-accent-foreground px-4 py-1 rounded font-heading font-bold text-xs hover:brightness-110 transition-all">
             Book Now
           </Link>
         </div>
@@ -106,7 +109,7 @@ const Header = () => {
                   <div className="absolute top-full left-0 w-56 bg-popover border border-border rounded-lg shadow-xl py-2 animate-fade-in-up">
                     {item.children.map((child) => (
                       <Link
-                        key={child.href}
+                        key={child.href + child.label}
                         to={child.href}
                         className="block px-4 py-2 text-sm hover:bg-muted hover:text-primary transition-colors"
                       >
@@ -139,7 +142,7 @@ const Header = () => {
                 </Link>
                 {item.children?.map((child) => (
                   <Link
-                    key={child.href}
+                    key={child.href + child.label}
                     to={child.href}
                     className="block px-8 py-2 text-sm text-muted-foreground border-b border-border hover:bg-muted"
                     onClick={() => setMobileOpen(false)}
@@ -150,7 +153,7 @@ const Header = () => {
               </div>
             ))}
             <div className="p-4">
-              <Link to="/booking" className="block text-center bg-safari-gold text-safari-dark py-3 rounded-lg font-heading font-bold" onClick={() => setMobileOpen(false)}>
+              <Link to="/booking" className="block text-center bg-accent text-accent-foreground py-3 rounded-lg font-heading font-bold" onClick={() => setMobileOpen(false)}>
                 Book Now
               </Link>
             </div>
