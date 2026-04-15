@@ -51,6 +51,10 @@
     --safari-dark: 30 15% 12%;
     --safari-earth: 25 30% 25%;
 
+    /* #bed356 → hsl(72, 55%, 58%) */
+    --highlight: 72 55% 58%;
+    --highlight-foreground: 30 10% 15%;
+
     --hero-overlay: 0 0% 0%;
 
     --sidebar-background: 0 0% 98%;
