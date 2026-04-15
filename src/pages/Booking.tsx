@@ -265,7 +265,7 @@ const Booking = () => {
                 <button
                   onClick={() => setStep(step + 1)}
                   disabled={!canProceed()}
-                  className="flex items-center gap-1 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-heading font-bold text-sm disabled:opacity-50 hover:bg-secondary transition-colors"
+                  className="flex items-center gap-1 bg-primary text-primary-foreground px-6 py-3 rounded-full font-heading font-bold text-sm disabled:opacity-50 hover:bg-secondary transition-colors shadow-md"
                 >
                   Continue <ChevronRight className="w-4 h-4" />
                 </button>
@@ -273,7 +273,7 @@ const Booking = () => {
                 <button
                   onClick={handleSubmit}
                   disabled={!canProceed()}
-                  className="flex items-center gap-2 bg-accent text-accent-foreground px-6 py-3 rounded-lg font-heading font-bold text-sm disabled:opacity-50 hover:brightness-110 transition-all"
+                  className="flex items-center gap-2 bg-accent text-accent-foreground px-6 py-3 rounded-full font-heading font-bold text-sm disabled:opacity-50 hover:brightness-110 transition-all shadow-md"
                 >
                   <Send className="w-4 h-4" /> Complete Booking
                 </button>
