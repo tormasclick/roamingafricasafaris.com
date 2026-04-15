@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
+import MobileActionBar from "@/components/MobileActionBar";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import SafariDetail from "./pages/SafariDetail";
@@ -27,7 +28,7 @@ const App = () => (
         <Toaster />
         <BrowserRouter>
           <Header />
-          <main className="min-h-screen">
+          <main className="min-h-screen pb-16 lg:pb-0">
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/kenya-safaris" element={<KenyaSafaris />} />
@@ -51,6 +52,7 @@ const App = () => (
           </main>
           <Footer />
           <WhatsAppFloat />
+          <MobileActionBar />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
