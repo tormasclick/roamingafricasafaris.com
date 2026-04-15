@@ -6,6 +6,7 @@ import { destinations } from "@/data/destinations";
 import { getDestinationImage } from "@/data/images";
 import { whatsappLink, COMPANY } from "@/data/constants";
 import SafariCard from "@/components/SafariCard";
+import HeroSlider from "@/components/HeroSlider";
 import SEO from "@/components/SEO";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
@@ -13,7 +14,6 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Calendar as CalendarWidget } from "@/components/ui/calendar";
 import { Button } from "@/components/ui/button";
 
-import heroImg from "@/assets/hero-safari.jpg";
 import tripadvisor from "@/assets/partners/tripadvisor.png";
 import safaribookings from "@/assets/partners/safaribookings.png";
 import touristlink from "@/assets/partners/touristlink.png";
@@ -25,7 +25,6 @@ import eawls from "@/assets/partners/eawls.png";
 import yourafricansafari from "@/assets/partners/yourafricansafari.png";
 
 const featured = getFeaturedPackages();
-const dayTrips = getDayTrips();
 const topDestinations = destinations.slice(0, 8);
 
 const partners = [
@@ -75,37 +74,8 @@ const Index = () => {
         jsonLd={jsonLd}
       />
 
-      {/* HERO */}
-      <section className="relative min-h-[85vh] flex items-center justify-center" style={{ backgroundImage: `url(${heroImg})`, backgroundSize: "cover", backgroundPosition: "center" }}>
-        <div className="absolute inset-0" style={{ backgroundColor: "rgba(0,0,0,0.45)" }} />
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <h1 className="text-primary-foreground mb-6 animate-fade-in-up">
-            Discover the Best African Adventure Safaris
-          </h1>
-          <p className="text-lg md:text-xl text-primary-foreground opacity-90 mb-8 max-w-2xl mx-auto font-body">
-            Explore Kenya, Tanzania and Uganda with Roaming Africa Tours & Safaris. Let us plan your dream safari holiday.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/booking" className="bg-accent text-accent-foreground px-8 py-4 rounded-lg font-heading font-bold text-lg hover:brightness-110 transition-all shadow-lg">
-              Book Now
-            </Link>
-            <button
-              onClick={() => document.getElementById("safari-planner")?.scrollIntoView({ behavior: "smooth" })}
-              className="bg-primary text-primary-foreground px-8 py-4 rounded-lg font-heading font-bold text-lg hover:bg-secondary transition-all shadow-lg"
-            >
-              Check Availability
-            </button>
-            <a
-              href={whatsappLink("Hi! I'd like to plan a safari with Roaming Africa Tours.")}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="whatsapp-btn text-lg justify-center"
-            >
-              <MessageCircle className="w-5 h-5" /> Book via WhatsApp
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* HERO SLIDER */}
+      <HeroSlider />
 
       {/* SAFARI PLANNER */}
       <section id="safari-planner" className="relative -mt-10 z-20 px-4">
@@ -154,7 +124,7 @@ const Index = () => {
             </div>
           </div>
           <div className="mt-4 flex justify-center">
-            <button onClick={handleCheckAvailability} className="bg-accent text-accent-foreground px-8 py-3 rounded-lg font-heading font-bold flex items-center gap-2 hover:brightness-110 transition-all">
+            <button onClick={handleCheckAvailability} className="bg-accent text-accent-foreground px-8 py-3 rounded-full font-heading font-bold flex items-center gap-2 hover:brightness-110 transition-all shadow-md">
               <Search className="w-5 h-5" /> Check Availability
             </button>
           </div>
@@ -172,9 +142,9 @@ const Index = () => {
               { icon: Shield, title: "Best Price Guaranteed", desc: "We offer competitive pricing with no hidden costs. Get the best value for your safari with transparent pricing and flexible payment options." },
               { icon: Headphones, title: "24/7 Customer Service", desc: "Our dedicated support team is available around the clock to assist you before, during, and after your safari. We're always just a call away." },
             ].map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="bg-card p-8 rounded-xl shadow-md text-center border border-border hover:shadow-lg transition-shadow">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full safari-gradient flex items-center justify-center">
-                  <Icon className="w-8 h-8 text-primary-foreground" />
+              <div key={title} className="bg-card p-8 rounded-2xl shadow-md text-center border border-border hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-highlight/20 flex items-center justify-center">
+                  <Icon className="w-8 h-8 text-primary" />
                 </div>
                 <h3 className="mb-3">{title}</h3>
                 <p className="text-muted-foreground text-sm">{desc}</p>
@@ -195,7 +165,7 @@ const Index = () => {
             ))}
           </div>
           <div className="mt-10 text-center">
-            <Link to="/kenya-safaris" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-3 rounded-lg font-heading font-bold hover:bg-secondary transition-all">
+            <Link to="/kenya-safaris" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-3 rounded-full font-heading font-bold hover:bg-secondary transition-all shadow-md">
               View All Safaris <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
@@ -209,7 +179,7 @@ const Index = () => {
           <p className="text-center text-primary-foreground opacity-80 mb-12 max-w-2xl mx-auto">From the iconic Masai Mara to the exotic beaches of Zanzibar, discover East Africa's most spectacular destinations.</p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {topDestinations.map((dest) => (
-              <Link key={dest.id} to={`/destination/${dest.slug}`} className="group relative rounded-xl overflow-hidden h-64 block">
+              <Link key={dest.id} to={`/destination/${dest.slug}`} className="group relative rounded-2xl overflow-hidden h-64 block shadow-lg hover:shadow-xl transition-shadow">
                 <img src={getDestinationImage(dest.image)} alt={dest.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" width={400} height={256} />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-4">
@@ -223,7 +193,7 @@ const Index = () => {
       </section>
 
       {/* HOW BOOKING WORKS */}
-      <section className="py-20">
+      <section className="py-20 section-beige">
         <div className="container mx-auto px-4">
           <h2 className="text-center mb-4">How Booking Works</h2>
           <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">Book your dream safari in 4 simple steps.</p>
@@ -234,15 +204,15 @@ const Index = () => {
               { step: "3", title: "Review & Pay", desc: "Review your booking summary and choose your preferred payment method." },
               { step: "4", title: "Get Confirmation", desc: "Receive your confirmed itinerary and prepare for an unforgettable safari!" },
             ].map((item) => (
-              <div key={item.step} className="text-center p-6">
-                <div className="w-14 h-14 mx-auto mb-4 rounded-full safari-gradient flex items-center justify-center text-primary-foreground font-heading font-bold text-xl">{item.step}</div>
+              <div key={item.step} className="text-center p-6 bg-card rounded-2xl shadow-md border border-border hover:shadow-lg transition-shadow">
+                <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-accent flex items-center justify-center text-accent-foreground font-heading font-bold text-xl">{item.step}</div>
                 <h3 className="text-lg mb-2">{item.title}</h3>
                 <p className="text-muted-foreground text-sm">{item.desc}</p>
               </div>
             ))}
           </div>
           <div className="text-center mt-8">
-            <Link to="/booking" className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-8 py-4 rounded-lg font-heading font-bold text-lg hover:brightness-110 transition-all">
+            <Link to="/booking" className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-8 py-3 rounded-full font-heading font-bold text-base hover:brightness-110 transition-all shadow-md">
               Book Your Safari Now <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
@@ -250,13 +220,13 @@ const Index = () => {
       </section>
 
       {/* PARTNERS */}
-      <section className="section-beige py-16">
+      <section className="py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-center mb-4">Recommended and Endorsed By</h2>
           <p className="text-center text-muted-foreground mb-12">We are proud to be recognized by leading travel organizations and platforms.</p>
           <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
             {partners.map((p) => (
-              <img key={p.name} src={p.img} alt={p.name} className="h-12 md:h-16 object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100" loading="lazy" />
+              <img key={p.name} src={p.img} alt={p.name} className="h-12 md:h-16 object-contain hover:scale-110 transition-transform duration-300" loading="lazy" />
             ))}
           </div>
         </div>
@@ -268,14 +238,14 @@ const Index = () => {
           <h2 className="mb-4">Ready to Start Your African Safari Adventure?</h2>
           <p className="opacity-80 mb-8 max-w-2xl mx-auto">Let our experienced safari experts help you plan the trip of a lifetime.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/booking" className="bg-accent text-accent-foreground px-8 py-4 rounded-lg font-heading font-bold text-lg hover:brightness-110 transition-all">
+            <Link to="/booking" className="bg-accent text-accent-foreground px-8 py-3 rounded-full font-heading font-bold text-base hover:brightness-110 transition-all shadow-md">
               Plan Your Safari
             </Link>
             <a
               href={whatsappLink("Hi! I need help planning my East Africa safari.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="whatsapp-btn text-lg justify-center"
+              className="whatsapp-btn text-base justify-center rounded-full"
             >
               <MessageCircle className="w-5 h-5" /> Inquire on WhatsApp
             </a>
