@@ -194,8 +194,61 @@ const Index = () => {
         </div>
       </section>
 
+      {/* HOTELS & LODGES */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <h2 className="text-center mb-4">Hotels & Safari Lodges</h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">Browse our curated selection of safari lodges, tented camps and hotels across East Africa.</p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {hotels.slice(0, 4).map((hotel) => (
+              <Link key={hotel.id} to={`/hotel/${hotel.slug}`} className="group bg-card border border-border rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <div className="relative h-40 overflow-hidden">
+                  <img src={getDestinationImage(hotel.image)} alt={hotel.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" />
+                  <span className="absolute top-3 right-3 text-xs font-heading font-bold px-3 py-1 rounded-full bg-accent text-accent-foreground">{hotel.tier}</span>
+                </div>
+                <div className="p-4">
+                  <h3 className="text-sm font-heading font-bold mb-1 flex items-center gap-1.5"><Bed className="w-4 h-4 text-primary" />{hotel.name}</h3>
+                  <p className="text-xs text-muted-foreground">{hotel.location} • {hotel.priceFrom && `From ${hotel.priceFrom}/night`}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+          <div className="mt-10 text-center">
+            <Link to="/hotels" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-3 rounded-full font-heading font-bold hover:bg-secondary transition-all shadow-md">
+              Browse All Hotels <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* SAFARI VEHICLES */}
+      <section className="section-beige py-20">
+        <div className="container mx-auto px-4">
+          <h2 className="text-center mb-4">Safari Vehicles & Tour Buses</h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">Hire reliable safari vehicles in Nairobi and Arusha. All vehicles come with experienced professional driver guides.</p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {vehicles.slice(0, 3).map((v) => (
+              <Link key={v.id} to={`/vehicle/${v.slug}`} className="group bg-card border border-border rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <div className="h-40 overflow-hidden">
+                  <img src={v.image} alt={v.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" />
+                </div>
+                <div className="p-4">
+                  <h3 className="text-sm font-heading font-bold mb-1 flex items-center gap-1.5"><Truck className="w-4 h-4 text-primary" />{v.name}</h3>
+                  <p className="text-xs text-muted-foreground">{v.capacity}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+          <div className="mt-10 text-center">
+            <Link to="/vehicles" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-3 rounded-full font-heading font-bold hover:bg-secondary transition-all shadow-md">
+              View All Vehicles <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* HOW BOOKING WORKS */}
-      <section className="py-20 section-beige">
+      <section className="py-20">
         <div className="container mx-auto px-4">
           <h2 className="text-center mb-4">How Booking Works</h2>
           <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">Book your dream safari in 4 simple steps.</p>
