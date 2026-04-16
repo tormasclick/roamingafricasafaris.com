@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Search, MapPin, Calendar, Users, Clock, Compass, Shield, Award, Headphones, ArrowRight, MessageCircle, CheckCircle } from "lucide-react";
+import { Search, MapPin, Calendar, Users, Clock, Compass, Shield, Award, Headphones, ArrowRight, MessageCircle, CheckCircle, Bed, Truck } from "lucide-react";
 import { getFeaturedPackages, getDayTrips } from "@/data/safariPackages";
 import { destinations } from "@/data/destinations";
 import { getDestinationImage } from "@/data/images";
 import { whatsappLink, COMPANY } from "@/data/constants";
+import { hotels } from "@/data/hotels";
+import { vehicles } from "@/data/vehicles";
 import SafariCard from "@/components/SafariCard";
 import HeroSlider from "@/components/HeroSlider";
 import SEO from "@/components/SEO";
