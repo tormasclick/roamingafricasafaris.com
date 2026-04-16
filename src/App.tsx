@@ -18,6 +18,10 @@ import Booking from "./pages/Booking";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
 import Resources from "./pages/Resources";
+import Hotels from "./pages/Hotels";
+import HotelDetail from "./pages/HotelDetail";
+import Vehicles from "./pages/Vehicles";
+import VehicleDetail from "./pages/VehicleDetail";
 
 const queryClient = new QueryClient();
 
@@ -42,6 +46,10 @@ const App = () => (
               <Route path="/destinations" element={<Destinations />} />
               <Route path="/destination/:slug" element={<DestinationDetail />} />
               <Route path="/safari/:slug" element={<SafariDetail />} />
+              <Route path="/hotels" element={<Hotels />} />
+              <Route path="/hotel/:slug" element={<HotelDetail />} />
+              <Route path="/vehicles" element={<Vehicles />} />
+              <Route path="/vehicle/:slug" element={<VehicleDetail />} />
               <Route path="/booking" element={<Booking />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/about" element={<About />} />

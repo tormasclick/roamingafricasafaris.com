@@ -52,6 +52,8 @@ const navItems: NavItem[] = [
       { label: "Tanzania Kenya Combined", href: "/combo-safaris/tanzania-kenya" },
     ],
   },
+  { label: "Hotels & Lodges", href: "/hotels" },
+  { label: "Vehicles", href: "/vehicles" },
   { label: "Destinations", href: "/destinations" },
   { label: "Resources", href: "/resources" },
   { label: "Contact", href: "/contact", highlight: true },
@@ -75,7 +77,7 @@ const Header = () => {
               <Mail className="w-3.5 h-3.5" />{EMAIL}
             </a>
           </div>
-          <Link to="/booking" className="bg-accent text-accent-foreground px-4 py-1 rounded font-heading font-bold text-xs hover:brightness-110 transition-all">
+          <Link to="/booking" className="bg-accent text-accent-foreground px-4 py-1 rounded-full font-heading font-bold text-xs hover:brightness-110 transition-all">
             Book Now
           </Link>
         </div>
@@ -89,7 +91,7 @@ const Header = () => {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-0.5">
             {navItems.map((item) => (
               <div
                 key={item.label}
@@ -99,7 +101,7 @@ const Header = () => {
               >
                 <Link
                   to={item.href}
-                  className={`px-3 py-2 text-sm font-heading font-medium rounded-full transition-colors flex items-center gap-1 ${
+                  className={`px-2.5 py-2 text-sm font-heading font-medium rounded-full transition-colors flex items-center gap-1 ${
                     item.highlight
                       ? "bg-primary text-primary-foreground hover:bg-secondary"
                       : location.pathname === item.href
@@ -117,6 +119,7 @@ const Header = () => {
                         key={child.href + child.label}
                         to={child.href}
                         className="block px-4 py-2 text-sm hover:bg-muted hover:text-primary transition-colors"
+                        onClick={() => setOpenDropdown(null)}
                       >
                         {child.label}
                       </Link>
@@ -158,7 +161,7 @@ const Header = () => {
               </div>
             ))}
             <div className="p-4">
-              <Link to="/booking" className="block text-center bg-accent text-accent-foreground py-3 rounded-lg font-heading font-bold" onClick={() => setMobileOpen(false)}>
+              <Link to="/booking" className="block text-center bg-accent text-accent-foreground py-3 rounded-full font-heading font-bold" onClick={() => setMobileOpen(false)}>
                 Book Now
               </Link>
             </div>
